@@ -1,14 +1,10 @@
-//Todo list app by Afolabi Sheriff
-//features
-//store in localstorage of browser
-//delete list items
 
 
 var addButton = document.getElementById('addButton');
 var addInput = document.getElementById('itemInput');
 var todoList = document.getElementById('todoList');
 var listArray = [];
-//declare addToList function
+
 
 function listItemObj(content, status) {
     this.content = '';
@@ -53,8 +49,6 @@ var removeItem = function(){
 
 
 }
-
-//function to change the todo list array
 var changeListArray = function(data,status){
 
     for(var i=0; i < listArray.length; i++){
@@ -67,7 +61,6 @@ var changeListArray = function(data,status){
     }
 }
 
-//function to chage the dom of the list of todo list
 var createItemDom = function(text,status){
 
     var listItem = document.createElement('li');
@@ -111,15 +104,12 @@ var addToList = function(){
     var newItem = new listItemObj();
     newItem.content = addInput.value;
     listArray.push(newItem);
-    //add to the local storage
     refreshLocal();
-    //change the dom
     var item = createItemDom(addInput.value,'incomplete');
     todoList.appendChild(item);
     addInput.value = '';
 }
 
-//function to clear todo list array
 var clearList = function(){
     listArray = [];
     localStorage.removeItem('todoList');
@@ -144,6 +134,5 @@ window.onload = function(){
     }
 
 };
-//add an event binder to the button
 addButton.addEventListener('click',addToList);
 clearButton.addEventListener('click',clearList);
